@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Product List</title>
+
+    <th:block th:replace=fragments/style></th:block>
+</head>
+
+<body class="container">
+<div class="content">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 mt-3 text-gray-800">Products</h1>
+    </div>
+
+    <form th:action="add" method="GET" autocomplete="off" id="createNewProduct">
+        <div>
+            <button type="submit" class="btn btn-primary mb-3">Create New Product</button>
+        </div>
+    </form>
+
+    <table id="productList" class="table">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Type</th>
+            <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="o : ${list}">
+            <td th:text="${o.id}"></td>
+            <td th:text="${o.code}"></td>
+            <td th:text="${o.name}"></td>
+            <td th:text="${o.category}"></td>
+            <td th:text="${o.brand}"></td>
+            <td th:text="${o.type}"></td>
+            <td th:text="${o.description}"></td>
+            <td><a th:href="'/edit/'+${o.id}">Edit</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <th:block th:replace=fragments/pagination></th:block>
+</div>
+</body>
+</html>
