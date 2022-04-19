@@ -19,7 +19,7 @@ public class ProductController {
 
     @GetMapping(value = {"/", "index.html"})
     public String index(Model model,
-                        @RequestParam(required = false, defaultValue = "0") int page,
+                        @RequestParam(required = false, defaultValue = "1") int page,
                         @RequestParam(required = false, defaultValue = "10") int size) {
         model.addAttribute("list",
                 productServiceImpl.list(PageRequestBuilder.getPageRequest(size, page, null)));

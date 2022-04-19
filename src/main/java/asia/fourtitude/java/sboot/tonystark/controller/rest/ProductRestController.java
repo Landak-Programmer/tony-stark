@@ -59,7 +59,7 @@ public class ProductRestController {
     })
     @Operation(summary = "Get list of product", description = "Get list of product")
     @GetMapping(value = "", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<Page<Product>> list(@RequestParam(required = false, defaultValue = "0") int page,
+    public ResponseEntity<Page<Product>> list(@RequestParam(required = false, defaultValue = "1") int page,
                                               @RequestParam(required = false, defaultValue = "10") int size) {
         return ResponseEntity.ok(productServiceImpl.list(PageRequestBuilder.getPageRequest(size, page, null)));
     }
